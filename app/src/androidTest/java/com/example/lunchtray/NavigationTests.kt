@@ -80,7 +80,7 @@ class NavigationTests : BaseTest() {
         // Click the cancel button
         onView(withId(R.id.cancel_button)).perform(click())
         // Check that the destination is correct
-        assertEquals(navController.currentDestination?.id, R.id.startOrder)
+        assertEquals(navController.currentDestination?.id, R.id.startOrderFragment)
     }
 
     /**
@@ -123,7 +123,7 @@ class NavigationTests : BaseTest() {
             Navigation.setViewNavController(fragment.requireView(), navController)
         }
         onView(withId(R.id.cancel_button)).perform(click())
-        assertEquals(navController.currentDestination?.id, R.id.startOrder)
+        assertEquals(navController.currentDestination?.id, R.id.startOrderFragment)
     }
 
     /**
@@ -160,7 +160,7 @@ class NavigationTests : BaseTest() {
             Navigation.setViewNavController(fragment.requireView(), navController)
         }
         onView(withId(R.id.cancel_button)).perform(click())
-        assertEquals(navController.currentDestination?.id, R.id.startOrder)
+        assertEquals(navController.currentDestination?.id, R.id.startOrderFragment)
     }
 
     /**
@@ -178,7 +178,7 @@ class NavigationTests : BaseTest() {
             navController.setCurrentDestination(destId = R.id.accompanimentMenuFragment)
             Navigation.setViewNavController(fragment.requireView(), navController)
         }
-        onView(withId(R.id.next_button)).perform(click())
+        onView(withId(R.id.cancel_button)).perform(click())
         assertEquals(navController.currentDestination?.id, R.id.checkoutFragment)
     }
 
@@ -197,7 +197,7 @@ class NavigationTests : BaseTest() {
             Navigation.setViewNavController(fragment.requireView(), navController)
         }
         onView(withId(R.id.cancel_button)).perform(click())
-        assertEquals(navController.currentDestination?.id, R.id.startOrder)
+        assertEquals(navController.currentDestination?.id, R.id.startOrderFragment)
     }
 
     /**
@@ -215,6 +215,6 @@ class NavigationTests : BaseTest() {
             Navigation.setViewNavController(fragment.requireView(), navController)
         }
         onView(withId(R.id.submit_button)).perform(click())
-        assertEquals(navController.currentDestination?.id, R.id.startOrder)
+        assertEquals(navController.currentDestination?.id, R.id.startOrderFragment)
     }
 }

@@ -40,7 +40,7 @@ class CheckoutFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
-    private val sharedViewModel: OrderViewModel by activityViewModels()
+    private val viewModel: OrderViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +54,7 @@ class CheckoutFragment : Fragment() {
         val root = binding.root
 
         // Calculate tax and total upon creating the CheckoutFragment view
-        sharedViewModel.calculateTaxAndTotal()
+        viewModel.calculateTaxAndTotal()
 
         return root
     }
@@ -63,7 +63,8 @@ class CheckoutFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
-            // TODO: initialize the OrderViewModel and CheckoutFragment variables
+            sharedViewModel = viewModel
+            checkoutFragment = this@CheckoutFragment
         }
     }
 
@@ -71,8 +72,8 @@ class CheckoutFragment : Fragment() {
      * Cancel the order and start over.
      */
     fun cancelOrder() {
-        sharedViewModel.resetOrder()
-        findNavController().navigate(R.id.action_entreeMenuFragment_to_startOrderFragment)
+        viewModel.resetOrder()
+        findNavController().navigate(R.id.action_checkoutFragment_to_startOrderFragment)
     }
 
     /**
@@ -81,8 +82,8 @@ class CheckoutFragment : Fragment() {
     fun submitOrder() {
         // Show snackbar to "confirm" order
         Snackbar.make(binding.root, R.string.submit_order, Snackbar.LENGTH_SHORT).show()
-        // TODO: Reset order in view model
-        // TODO: Navigate back to the [StartFragment] to start over
+        findNavController().navigate(R.id.action_checkoutFragment_to_startOrderFragment)
+        viewModel.resetOrder()
     }
 
     /**

@@ -59,7 +59,7 @@ class SideMenuFragment : Fragment() {
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = sharedViewModel
-            // TODO: initialize the SideMenuFragment variables
+            sideMenuFragment = this@SideMenuFragment
         }
     }
 
@@ -67,7 +67,7 @@ class SideMenuFragment : Fragment() {
      * Navigate to the accompaniments menu fragment
      */
     fun goToNextScreen() {
-        // TODO: Navigate to the AccompanimentMenuFragment
+        findNavController().navigate(R.id.action_sideMenuFragment_to_checkoutFragment)
     }
 
     /**

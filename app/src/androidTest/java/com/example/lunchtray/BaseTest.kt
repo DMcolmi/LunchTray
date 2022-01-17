@@ -32,11 +32,11 @@ open class BaseTest {
         // Move to next fragment
         onView(withId(R.id.next_button)).perform(click())
         // Select side item
-        onView(withId(R.id.salad)).perform(click())
+        onView(withId(R.id.bread)).perform(click())
         // Move to next fragment
         onView(withId(R.id.next_button)).perform(click())
         // Select accompaniment item
-        onView(withId(R.id.bread)).perform(click())
+        onView(withId(R.id.salad)).perform(click())
         // Move to next fragment
         onView(withId(R.id.next_button)).perform(click())
     }
